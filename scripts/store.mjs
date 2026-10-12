@@ -1,26 +1,43 @@
 import { getProducts } from "./ProductService.mjs";
 import { getLocalStorage, setLocalStorage } from "./Storage.mjs";
-
+import { convMoneda } from "./CurrencyService.mjs"; // for API
 
 async function initStore() {
   const container = document.querySelector("#products-container");
   if (!container) return;
+
   const allProd = await getProducts();
-  function render(list) {
-    container.innerHTML = list.map(p => `
-      <article class="product-card">
-        <a href="product.html?id=${p.id}"><img src="${p.image}" alt="${p.name}"></a>
-        <div class="product-card-cont">
-          <a href="product.html?id=${p.id}" style="text-decoration:none; color:inherit;">
-            <h3>${p.name}</h3>
-          </a>
-          <p class="product-des">${p.descript}</p>
-          <p class="product-price">$${p.price.toLocaleString("es-CL")}</p>
-          <button class="button add-to-cart" data-id="${p.id}">Add to Cart</button>
-        </div>
-      </article>
-    `).join("");
+  let CurrProd = allProd; 
+  let CurrMon = "CLP"; 
+  async function render(list) {
+    const htmlArray = await Promise.all(list.map(async (p) => {
+      const precioConvertido = await convMoneda(p.price, CurrMon);
+      
+      let simb = "\$";
+      if (CurrMon === "EUR") simb = "€";
+      if (CurrMon === "USD") simb = "US\$";
+
+      const precioFormateado = CurrMon === "CLP" 
+        ? precioConvertido.toLocaleString("es-CL") 
+        : precioConvertido.toFixed(2);
+
+      return `
+        <article class="product-card">
+          <a href="product.html?id=${p.id}"><img src="${p.image}" alt="${p.name}"></a>
+          <div class="product-card-cont">
+            <a href="product.html?id=${p.id}" style="text-deco:none; color:inherit;">
+              <h3>${p.name}</h3>
+            </a>
+            <p class="product-des">${p.descript}</p>
+            <p class="product-price">${simb}${precioFormateado}</p>
+            <button class="button add-to-cart" data-id="${p.id}">Add to Cart</button>
+          </div>
+        </article>
+      `;
+    }));
+    container.innerHTML = htmlArray.join("");
   }
+
   container.addEventListener("click", (e) => {
     if (e.target.classList.contains("add-to-cart")) {
       const productId = e.target.dataset.id;
@@ -29,29 +46,32 @@ async function initStore() {
         const cartItems = getLocalStorage("vonte-cart") || [];
         cartItems.push(item);
         setLocalStorage("vonte-cart", cartItems);
-        alert(`${item.name} added to cart!`);
-      }
+        alert(`${item.name} added to cart!`);}
     }
   });
+
   // Filter by categories
   const filterB = document.querySelectorAll(".filter-button");
   filterB.forEach(btn => {
     btn.addEventListener("click", (e) => {
       const cat = e.target.dataset.category;
-            let productosFiltrados;
-      if (cat === "all") {
-        productosFiltrados = allProd;
-      } else {
-        productosFiltrados = allProd.filter(p => p.category === cat);
-      }      
-      render(productosFiltrados);
+      if (cat === "all") {CurrProd = allProd;} 
+      else {CurrProd = allProd.filter(p => p.category === cat);}   
+
+      render(CurrProd);
       const activeBtn = document.querySelector(".filter-button.active");
-      if (activeBtn) {
-        activeBtn.classList.remove("active");}
+      if (activeBtn) {activeBtn.classList.remove("active");}
       e.target.classList.add("active");
     });});
-  render(allProd);
-}
+
+  const selectorMoneda = document.querySelector(".currency-control select");
+  if (selectorMoneda) {
+    selectorMoneda.addEventListener("change", (e) => {
+      CurrMon = e.target.value;
+      render(CurrProd);
+    });}
+
+  render(allProd);}
 initStore();
 //Menu (Three lines, just for mobile)
 const menuButton = document.querySelector(".menu-button");
