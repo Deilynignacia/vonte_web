@@ -8,9 +8,13 @@ export async function displayProductDetails(productId) {
   // For the HTML...
   document.querySelector("h2").textContent = product.name;
   const img = document.getElementById("productImage");
-  if (img) {img.src = product.image;
-            img.alt = product.name;}
+  if (img) {
+    img.src = product.image;
+    img.alt = product.name;
+  }
+  
   document.getElementById("productPrice").textContent = `$${product.price.toLocaleString("es-CL")}`;
+  
   document.getElementById("productDesc").textContent = product.descript;
 
   // Cart

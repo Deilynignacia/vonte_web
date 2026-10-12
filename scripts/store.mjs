@@ -1,12 +1,14 @@
 import { getProducts } from "./ProductService.mjs";
 import { getLocalStorage, setLocalStorage } from "./Storage.mjs";
 import { convMoneda } from "./CurrencyService.mjs"; // for API
+import { setupNavigation } from "./Navigation.mjs";
 
 async function initStore() {
   const container = document.querySelector("#products-container");
   if (!container) return;
 
   const allProd = await getProducts();
+
   let CurrProd = allProd; 
   let CurrMon = "CLP"; 
   async function render(list) {
@@ -16,7 +18,6 @@ async function initStore() {
       let simb = "\$";
       if (CurrMon === "EUR") simb = "€";
       if (CurrMon === "USD") simb = "US\$";
-
       const precioFormateado = CurrMon === "CLP" 
         ? precioConvertido.toLocaleString("es-CL") 
         : precioConvertido.toFixed(2);
@@ -24,9 +25,13 @@ async function initStore() {
       return `
         <article class="product-card">
           <a href="product.html?id=${p.id}"><img src="${p.image}" alt="${p.name}"></a>
+
           <div class="product-card-cont">
-            <a href="product.html?id=${p.id}" style="text-deco:none; color:inherit;">
-              <h3>${p.name}</h3>
+            <a href="product.html?id=${p.id}" 
+            style="text-decoration:none; 
+            color:inherit;">
+            
+            <h3>${p.name}</h3>
             </a>
             <p class="product-des">${p.descript}</p>
             <p class="product-price">${simb}${precioFormateado}</p>
@@ -46,7 +51,8 @@ async function initStore() {
         const cartItems = getLocalStorage("vonte-cart") || [];
         cartItems.push(item);
         setLocalStorage("vonte-cart", cartItems);
-        alert(`${item.name} added to cart!`);}
+        alert(`${item.name} added to cart!`);
+      }
     }
   });
 
@@ -55,29 +61,28 @@ async function initStore() {
   filterB.forEach(btn => {
     btn.addEventListener("click", (e) => {
       const cat = e.target.dataset.category;
-      if (cat === "all") {CurrProd = allProd;} 
-      else {CurrProd = allProd.filter(p => p.category === cat);}   
-
+      if (cat === "all") {
+        CurrProd = allProd;
+      } else {
+        CurrProd = allProd.filter(p => p.category === cat);
+      }   
       render(CurrProd);
       const activeBtn = document.querySelector(".filter-button.active");
-      if (activeBtn) {activeBtn.classList.remove("active");}
+      if (activeBtn) {
+        activeBtn.classList.remove("active");
+      }
       e.target.classList.add("active");
-    });});
+    });
+  });
 
   const selectorMoneda = document.querySelector(".currency-control select");
   if (selectorMoneda) {
     selectorMoneda.addEventListener("change", (e) => {
       CurrMon = e.target.value;
       render(CurrProd);
-    });}
-
-  render(allProd);}
-initStore();
-//Menu (Three lines, just for mobile)
-const menuButton = document.querySelector(".menu-button");
-const navLinks = document.querySelector(".nav-links");
-if (menuButton && navLinks) {
-  menuButton.addEventListener("click", () => {
-    navLinks.classList.toggle("show-menu");
-  });
+    });
+  }
+  render(allProd);
 }
+initStore();
+setupNavigation();
