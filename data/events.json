@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "title": "Gabriela Kids",
+    "date": "2026-11-30",
+    "location": "Limache College, Limache",
+    "image": "assets/images/events/gabriela-kids.png",
+    "descript": "A special version of Gabriela created for children, presenting the life and legacy of Gabriela Mistral through dance and theatre in a format adapted for younger audiences."
+  },
+  {
+    "id": 2,
+    "title": "Gabriela",
+    "date": "2026-11-30",
+    "location": "Limache College, Limache",
+    "image": "assets/images/events/gabriela.png",
+    "descript": "A historical fiction dance and theatre production inspired by the life and legacy of Gabriela Mistral."
+  },
+  {
+    "id": 3,
+    "title": "Gabriela",
+    "date": "2026-12-03",
+    "location": "Valparaíso Region, Chile",
+    "image": "assets/images/events/gabriela.png",
+    "descript": "A historical fiction dance and theatre production inspired by the life and legacy of Gabriela Mistral."
+  },
+  {
+    "id": 4,
+    "title": "Gabriela",
+    "date": "2026-12-10",
+    "location": "Teatro IPA, Valparaíso",
+    "image": "assets/images/events/gabriela.png",
+    "descript": "A historical fiction dance and theatre production inspired by the life and legacy of Gabriela Mistral."
+  }
+]

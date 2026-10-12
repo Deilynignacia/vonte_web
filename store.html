@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vonté Store</title>
+  <link rel="icon" type="image/png" href="assets/icons/vonte-favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/store.css">
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="main-nav">
+      <button class="menu-button" aria-label="Open navigation menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <a href="index.html" class="logo">
+        <img src="assets/icons/logo.png" alt="Vonté logo">
+      </a>
+      <div class="nav-actions">
+        <button class="icon-button" aria-label="Search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+            <a href="cart.html" class="icon-button" aria-label="Shopping cart">
+            <i class="fa-solid fa-cart-shopping"></i>
+        </a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#about">About Us</a></li>
+        <li><a href="index.html#performances">Performances</a></li>
+        <li><a href="index.html#gallery">Gallery</a></li>
+        <li><a href="store.html">Store</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Store hero -->
+    <section class="store-hero">
+      <div class="store-hero-content">
+        <h1>Official Vonté Merchandise</h1>
+        <p>Take a piece of Vonté with you wherever you go.</p>
+      </div>
+    </section>
+
+    <!-- Store controls -->
+    <section class="store-controls">
+      <div class="filter-group">
+        <button class="filter-button active" data-category="all">
+          All
+        </button>
+        <button class="filter-button" data-category="apparel">
+          Apparel
+        </button>
+        <button class="filter-button" data-category="accessories">Accessories</button>
+      </div>
+      <div class="currency-control">
+        <label for="currency">Currency</label>
+        <select id="currency">
+          <option value="CLP">CLP</option>
+          <option value="USD">USD</option>
+          <option value="EUR">EUR</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- Products -->
+    <section class="store-products">
+      <h2>Products</h2>
+      <div id="products-container" class="products-container">
+        <!-- Products here... -->
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact">
+      <h2>Didn't Find What You Were Looking For?</h2>
+      <p>
+        Contact us if you are looking for a specific Vonté product
+        or would like more information.
+      </p>
+      <a href="#" class="button">
+        Contact Us
+      </a>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Vonté. All rights reserved.</p>
+  </footer>
+
+  <script type="module" src="scripts/store.mjs"></script>
+</body>
+</html>

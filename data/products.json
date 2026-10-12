@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "Vonté T-Shirt",
+    "price": 12990,
+    "category": "apparel",
+    "image": "assets/images/products/shirt.png",
+    "descript": "Official Vonté T-shirt featuring the company logo.",
+    "available": true
+  },
+  {
+    "id": 2,
+    "name": "Vonté Hoodie",
+    "price": 20500,
+    "category": "apparel",
+    "image": "assets/images/products/hoodie.jpg",
+    "descript": "Comfortable Vonté hoodie designed for rehearsals and everyday wear.",
+    "available": true
+  },
+  {
+    "id": 3,
+    "name": "Vonté Keychain",
+    "price": 2500,
+    "category": "accessories",
+    "image": "assets/images/products/keychain.jpg",
+    "descript": "A lightweight keychain featuring the Vonté identity.",
+    "available": true
+  },
+  {
+    "id": 4,
+    "name": "Gabriela Tote Bag",
+    "price": 5500,
+    "category": "accessories",
+    "image": "assets/images/products/tote.jpg",
+    "descript": "A tote bag inspired by Vonté's Gabriela production.",
+    "available": true
+  }
+]
