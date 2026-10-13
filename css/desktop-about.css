@@ -1,0 +1,77 @@
+@media (min-width: 900px) {
+
+  /* About just text (image has the same styles from index) */
+
+  .about {
+    display: block;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 4rem 3rem 5rem;
+    text-align: center;
+  }
+
+
+  .about h1 {
+    font-size: 2.6rem;
+    line-height: 1;
+    margin: 0 auto 2rem;
+  }
+
+  .about h3 {
+    font-size: 1.4rem;
+    line-height: 1.4;
+    margin: 0 auto 0.5rem;
+    color: var(--white);
+  }
+
+  .about > p:first-of-type {
+    margin: 0 auto 3rem;
+    color: var(--gray);
+    font-size: 0.85rem;
+  }
+
+  .about > p {
+    max-width: 900px;
+    margin: 0 auto 2rem;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--light-gray);
+    text-align: center;
+  }
+  .about > p:last-of-type {
+    margin-bottom: 0;
+  }
+
+  /* nav desktop */
+  .main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 4rem;
+  }
+  .menu-button { display: none; }
+  .logo { order: 1; }
+
+  .nav-links {
+    display: flex !important;
+    position: static;
+    width: auto;
+    padding: 0;
+    gap: 3rem;
+    background: transparent;
+    order: 2;
+  }
+  .nav-links a {
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+  }
+  .nav-links a:hover {
+    color: var(--accent);
+  }
+  .nav-actions { order: 3; }
+
+
+}

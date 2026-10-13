@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vonté Store</title>
+  <title>Your Cart | Vonté Store</title>
+  <meta name="description" content="Review your selected merchandise in your shopping cart. Thank you for supporting!">
   <link rel="icon" type="image/png" href="assets/icons/vonte-favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,6 +16,8 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/store.css">
+  <link rel="stylesheet" href="css/desktop-styles.css">
+  <link rel="stylesheet" href="css/desktop-store.css">
 </head>
 
 <body>
@@ -27,9 +30,6 @@
         <img src="assets/icons/logo.png" alt="Vonté logo">
       </a>
       <div class="nav-actions">
-        <button class="icon-button" aria-label="Search">
-          <i class="fa-solid fa-magnifying-glass"></i>
-        </button>
             <a href="cart.html" class="icon-button" aria-label="Shopping cart">
             <i class="fa-solid fa-cart-shopping"></i>
         </a>
@@ -52,7 +52,7 @@
       </div>
       <div class="cart-footer">
         <h3>Total: <span id="cartTotal">$0</span></h3>
-        <button class="button">Checkout</button>
+        <button class="button" id="checkoutB">Checkout</button>
       </div>
     </section>
   </main>

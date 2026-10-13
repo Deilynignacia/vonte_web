@@ -3,7 +3,9 @@ import { getDailyQuote } from "./QuoteService.mjs";
 import { setupNavigation } from "./Navigation.mjs";
 
 async function displayEvents() {
-  const eventsContainer = document.querySelector("#events-container");
+  const eventsC = document.querySelector("#events-container");
+
+  if (!eventsC) return;
 
   // Get Events list
   const events = await getEvents(); 
@@ -20,8 +22,9 @@ async function displayEvents() {
       </article>`;}
     );
 
-  eventsContainer.innerHTML = htmlComp;
+  eventsC.innerHTML = htmlComp;
 }
+
 displayEvents();
 
 async function displayQuote() {

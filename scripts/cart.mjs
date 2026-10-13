@@ -1,14 +1,20 @@
 import { getLocalStorage, setLocalStorage } from "./Storage.mjs";
+import { setupNavigation } from "./Navigation.mjs";
+
 function displayCart() {
   const cartCont = document.querySelector("#cart-container");
   const cartTotal = document.querySelector("#cartTotal");
   const cartItems = getLocalStorage("vonte-cart") || [];
+  
   if (!cartItems.length) {
     cartCont.innerHTML = "<p>Your cart is empty :(</p>";
     cartTotal.textContent = "\$0";
     return;
   }
-  let htmlComp = "", sumaTotal = 0; 
+  
+  let htmlComp = "";
+  let sumaTotal = 0; 
+  
   cartItems.forEach((item) => {
     sumaTotal += item.price; 
     htmlComp += `
@@ -23,15 +29,41 @@ function displayCart() {
         </button>
       </div>`;
   });
+  
   cartCont.innerHTML = htmlComp;
   cartTotal.textContent = `$${sumaTotal.toLocaleString("es-CL")}`;
+  
   document.querySelectorAll(".rem-item").forEach(btn => {
     btn.addEventListener("click", (e) => {
       const list = getLocalStorage("vonte-cart") || [];
       const pos = list.findIndex(p => Number(p.id) === Number(e.target.dataset.id));
+      
       if (pos > -1) {
         list.splice(pos, 1);
         setLocalStorage("vonte-cart", list);
         displayCart(); // refresh...
-      }});});}
+      }
+    });
+  });
+}
+
+// checkout
+const checkoutB = document.querySelector("#checkoutB");
+
+if (checkoutB) {
+  checkoutB.addEventListener("click", () => {
+    const cartItems = getLocalStorage("vonte-cart") || [];
+    if (cartItems.length === 0) {
+      alert("Your cart is empty.");
+      return;
+    }
+
+    // fake payment (correct when page is functional and open)
+    alert("Thank you for your purchase!");
+    setLocalStorage("vonte-cart", []);
+    location.reload();
+  });
+}
+
 displayCart();
+setupNavigation();
