@@ -8,7 +8,7 @@ function displayCart() {
   
   if (!cartItems.length) {
     cartCont.innerHTML = "<p>Your cart is empty :(</p>";
-    cartTotal.textContent = "\$0";
+    cartTotal.textContent = "$0";
     return;
   }
   

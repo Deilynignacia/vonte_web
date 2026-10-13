@@ -1,6 +1,6 @@
 import { getProducts } from "./ProductService.mjs";
 import { getLocalStorage, setLocalStorage } from "./Storage.mjs";
-import { convMoneda } from "./CurrencyService.mjs"; // for API
+import { convMoneda } from "./CurrencyService.mjs"; // for API (check later for other currencies)
 import { setupNavigation } from "./Navigation.mjs";
 
 async function initStore() {
@@ -15,9 +15,9 @@ async function initStore() {
     const htmlArray = await Promise.all(list.map(async (p) => {
       const precioConvertido = await convMoneda(p.price, CurrMon);
       
-      let simb = "\$";
+      let simb = "$";
       if (CurrMon === "EUR") simb = "€";
-      if (CurrMon === "USD") simb = "US\$";
+      if (CurrMon === "USD") simb = "US$";
       const precioFormateado = CurrMon === "CLP" 
         ? precioConvertido.toLocaleString("es-CL") 
         : precioConvertido.toFixed(2);
