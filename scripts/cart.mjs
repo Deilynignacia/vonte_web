@@ -18,13 +18,17 @@ function displayCart() {
   cartItems.forEach((item) => {
     sumaTotal += item.price; 
     htmlComp += `
-      <div class="cart-item" style="display:flex; gap:15px; margin-bottom:15px; align-items:center;">
+      <div class="cart-item" style="display:flex;
+      gap:15px;
+      margin-bottom:15px;
+      align-items:center;">
         <img src="${item.image}" alt="${item.name}" width="80">
         <div style="flex-grow:1;">
           <h4>${item.name}</h4>
           <p>$${item.price.toLocaleString("es-CL")}</p>
         </div>
-        <button class="button rem-item" data-id="${item.id}" style="background-color:#333; padding:0.4rem 0.6rem;">
+        <button class="button rem-item" data-id="${item.id}" style="background-color:#333;
+        padding:0.4rem 0.6rem;">
           <i class="fa-solid fa-trash" style="pointer-events:none;"></i>
         </button>
       </div>`;

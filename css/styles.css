@@ -359,7 +359,7 @@ section p {
 footer {
   padding: 1.25rem;
   background-color: var(--black);
-  color: #777777;
+  color: #eeeeee;
   text-align: center;
   border-top: 1px solid #1c1c1c;
 }

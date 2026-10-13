@@ -6,7 +6,7 @@ export async function displayProductDetails(productId) {
   const product = allProd.find(p => Number(p.id) === Number(productId)); 
 
   // For the HTML...
-  document.querySelector("h2").textContent = product.name;
+  document.querySelector("h1").textContent = product.name;
   const img = document.getElementById("productImage");
   if (img) {
     img.src = product.image;

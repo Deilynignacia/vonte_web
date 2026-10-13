@@ -58,7 +58,7 @@
   color: var(--white);
 }
 
-/* Currency */
+/*Currency */
 .currency-control {
   display: flex;
   align-items: center;
@@ -82,7 +82,7 @@
   font-size: 0.75rem;
 }
 
-/* Products */
+/* Products*/
 .store-products {
   padding: 2rem 1.25rem;
   background-color: var(--black);

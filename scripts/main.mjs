@@ -10,9 +10,12 @@ async function displayEvents() {
   // Get Events list
   const events = await getEvents(); 
   let htmlComp = ""; 
+
   events.forEach((event) => {
     htmlComp += `<article class="event-card">
+
         <img src="${event.image}" alt="${event.title}">
+        
         <div class="event-card-content">
           <h3>${event.title}</h3>
           <p>${event.date}</p>
@@ -41,6 +44,7 @@ async function displayQuote() {
       <i class="fa-solid fa-quote-left" 
       style="color: #a81c31; 
       font-size: 1.8rem; 
+
       margin-bottom: 1rem;"></i>
       <h3 style="font-family: 'Montserrat', sans-serif; 
       font-style: italic; 
